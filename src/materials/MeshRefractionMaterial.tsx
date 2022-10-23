@@ -158,7 +158,7 @@ export const MeshRefractionMaterial = shaderMaterial(
       finalColor *= vColor;
     #endif
     float nFresnel = fresnelFunc(viewDirection, normal) * fresnel;
-    gl_FragColor = vec4(mix(finalColor, vec3(1.0), nFresnel), 1.0);      
+    gl_FragColor = clamp(vec4(mix(finalColor, vec3(1.0), nFresnel), 1.0), 0.0, 1.0);      
     #include <tonemapping_fragment>
     #include <encodings_fragment>
   }`
